@@ -2,7 +2,9 @@
 
 export default function swDev() {
   let swUrl = `${process.env.PUBLIC_URL}/sw.js`
-  navigator.serviceWorker.register(swUrl).then((response) => {
-    console.log(response.scope);
-  })
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register(swUrl).then((response) => {
+      console.log("SW registered successfully", response.scope);
+    })
+  }
 }
